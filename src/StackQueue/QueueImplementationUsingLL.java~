@@ -1,0 +1,87 @@
+package StackQueue;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class StackUsingTwoQueue {
+    QueueNode front;
+    QueueNode end;
+    int length;
+    private class QueueNode{
+        int data;
+        QueueNode next;
+
+        QueueNode(int data){
+            this.data=data;
+        }
+    }
+    public void enque(int data){
+        QueueNode node;
+        if(front==null){
+            node=new QueueNode(data);
+            front=end=node;
+            System.out.println("element added " + front.data);
+            length++;
+            return;
+        }else {
+            node=new QueueNode(data);
+            end.next=node;
+            end=node;
+
+
+
+            System.out.println("element added " + end.data);
+            length++;
+        }
+        return;
+    }
+     // remove simply remove ,but poll remove and return removed element
+    public void deque(){
+        QueueNode temp ;
+        if(front==null){
+            System.out.println("Queue is Empty...");
+            return ;
+        }else {
+             temp=front;
+            front=front.next;
+            temp.next=null;
+            System.out.println("Polled Element ===" + temp.data);
+            length--;
+            return ;
+        }
+    }
+
+    // return null if queue is empty...
+    public Object peek(){
+        if(front==null){
+            System.out.println("Queue is Empty...");
+            return null;
+        }else {
+            System.out.println("Peek Element is ==" +front.data);
+            return front.data;
+        }
+    }
+    public int size(){
+        System.out.println("Size of Queue is = "+length);
+        return length;
+    }
+
+    public static void main(String[] args) {
+        StackUsingTwoQueue stackUsingTwoQueue=new StackUsingTwoQueue();
+
+        stackUsingTwoQueue.enque(10);
+        stackUsingTwoQueue.enque(20);
+        stackUsingTwoQueue.enque(30);
+        stackUsingTwoQueue.peek();
+        stackUsingTwoQueue.enque(40);
+        stackUsingTwoQueue.deque();
+        stackUsingTwoQueue.deque();
+        stackUsingTwoQueue.peek();
+        stackUsingTwoQueue.size();
+
+        StackUsingTwoQueue stackUsingTwoQueue2=new StackUsingTwoQueue();
+
+
+
+    }
+}

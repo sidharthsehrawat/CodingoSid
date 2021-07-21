@@ -1,0 +1,40 @@
+package Hackerank;
+
+public class SquareOfNumber {
+    public static void main(String[] args) {
+         int p=297,q=300;
+        System.out.println();
+        for(int n=p;n<=q;n++) {
+
+            int number = (int) Math.pow(n, 2);
+            //System.out.println(number);
+            // find digit of number
+           int count= findDigit(n);
+           // System.out.println(count);
+            String str = String.valueOf(number);
+            if(number>=10 || number==1) {
+                String st1 = str.substring(0, count);
+                String st2 = str.substring(count);
+                // System.out.println(st1 + " " + st2);
+
+                int n1 = Integer.valueOf(st1);
+                int n2 = Integer.valueOf(st2);
+
+                if (n1 !=0 && n2!=0 && n1 + n2 == n) {
+                    System.out.print(n + " ");
+                }
+            }
+        }
+     }
+
+    private static int findDigit(int n) {
+        int count = 1;
+        if (n >= 10) {
+            while (n >= 10) {
+                ++count;
+                n = n / 10;
+            }
+        }
+    return count;
+    }
+}
